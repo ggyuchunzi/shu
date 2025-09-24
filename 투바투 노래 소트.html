@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>투바투 전곡 (믹테 포함)</title>
+<script type="text/javascript">
+<!--
+//*********************************************************
+//
+// ?価するメンバ?の名前のリスト
+//
+// この部分を変更して下さい。名前の削除・追加も可?です。
+// 名前を引用符(")で括り、コン?(,)で区切って下さい。
+// 但し、リストの最後にはコン?を入れてはいけません。
+//
+//*********************************************************
+var namMember = new Array(
+
+"<img src=> <br>New Rules</br>",
+"<img src=> <br>9와 4분의 3 승강장에서 너를 기다려</br>",
+"<img src=> <br>간지러워</br>",
+"<img src=> <br>Poppin' star</br>",
+"<img src=> <br>그냥 괴물을 살려두면 안 되는 걸까?</br>",
+"<img src=> <br>Magic Island</br>",
+"<img src=> <br>20cm</br>",
+"<img src=> <br>Angel or Devil</br>",
+"<img src=> <br>Force</br>",
+"<img src=> <br>Everlasting Shine (영원히 빛나라)</br>",
+"<img src=> <br>LO$ER=LO♡ER</br>",
+"<img src=> <br>Anti-Romantic</br>",
+"<img src=> <br>0X1 LOVESONG</br>",
+"<img src=> <br>Magic</br>",
+"<img src=> <br>소악행</br>",
+"<img src=> <br>밸런스 게임</br>",
+"<img src=> <br>No Rules</br>",
+"<img src=> <br>교환일기 (두밧두 와리와리)</br>",
+"<img src=> <br>디어 스푸트니크</br>",
+"<img src=> <br>Hydrangea Love (수국꽃 같은 사랑)</br>",
+"<img src=> <br>Ito</br>",
+"<img src=> <br>Ring</br>",
+"<img src=> <br>Hitori no Yoru</br>",
+"<img src=> <br>Growing Pain</br>",
+"<img src=> <br>Chasing That Feeling</br>",
+"<img src=> <br>Back for More</br>",
+"<img src=> <br>Dreamer</br>",
+"<img src=> <br>Deep Down</br>",
+"<img src=> <br>Happily Ever After</br>",
+"<img src=> <br>Do It Like That</br>",
+"<img src=> <br>내일에서 기다릴게</br>",
+"<img src=> <br>Deja Vu</br>",
+"<img src=> <br>Miracle</br>",
+"<img src=> <br>The Killa (I Belong to You)</br>",
+"<img src=> <br>Quarter Life</br>",
+"<img src=> <br>Upside Down Kiss</br>",
+"<img src=> <br>Beautiful Strangers</br>",
+"<img src=> <br>Ghost Girl</br>",
+"<img src=> <br>Sunday Drive</br>",
+"<img src=> <br>Dance With You</br>",
+"<img src=> <br>Take My Half</br>",
+"<img src=> <br>Bird of Night</br>",
+"<img src=> <br>별의 노래</br>",
+"<img src=> <br>Step by Step</br>",
+"<img src=> <br>그날이 오면</br>",
+"<img src=> <br>Love Language</br>",
+"<img src=> <br>Rise</br>",
+"<img src=> <br>Can't Stop</br>",
+"<img src=> <br>Heaven</br>",
+"<img src=> <br>Over The Moon</br>",
+"<img src=> <br>Danger</br>",
+"<img src=> <br>Resist</br>",
+"<img src=> <br>Forty One Winks</br>",
+"<img src=> <br>Higher Than Heaven</br>",
+"<img src=> <br>Open Always Wins</br>",
+"<img src=> <br>We’ll Never Change</br>",
+"<img src=> <br>Kitto Zutto</br>",
+"<img src=> <br>이젠 안녕</br>",
+"<img src=> <br>Devil by the Window</br>",
+"<img src=> <br>Sugar Rush Ride</br>",
+"<img src=> <br>Happy Fools</br>",
+"<img src=> <br>Tinnitus (돌멩이가 되고 싶어)</br>",
+"<img src=> <br>네버랜드를 떠나며</br>",
+"<img src=> <br>Free Falling</br>",
+"<img src=> <br>Ring</br>",
+"<img src=> <br>Valley of Lies</br>",
+"<img src=> <br>PS5</br>",
+"<img src=> <br>Opening Sequence</br>",
+"<img src=> <br>Good Boy Gone Bad</br>",
+"<img src=> <br>Trust Fund Baby</br>",
+"<img src=> <br>Lonely Boy (네 번째 손가락 위 타투)</br>",
+"<img src=> <br>Thursday's Child Has Far To Go</br>",
+"<img src=> <br>EYES (감은 눈을 떠봐)</br>",
+"<img src=> <br>널 보면 시간이 멈춰 어느 순간에도</br>",
+"<img src=> <br>Your Light</br>",
+"<img src=> <br>Ghosting</br>",
+"<img src=> <br>5시 53분의 하늘에서 발견한 너와 나</br>",
+"<img src=> <br>날씨를 잃어버렸어</br>",
+"<img src=> <br>Wishlist</br>",
+"<img src=> <br>Way Home</br>",
+"<img src=> <br>Drama</br>",
+"<img src=> <br>세계가 불타버린 밤, 우린...</br>",
+"<img src=> <br>거울 속의 미로</br>",
+"<img src=> <br>동물원을 빠져나온 퓨마</br>",
+"<img src=> <br>Eternally</br>",
+"<img src=> <br>Blue Orangeade</br>",
+"<img src=> <br>어느날 머리에서 뿔이 자랐다</br>",
+"<img src=> <br>Our Summer</br>",
+"<img src=> <br>Cat & Dog</br>",
+"<img src=> <br>별의 낮잠</br>",
+"<img src=> <br>Panic</br>",
+"<img src=> <br>GGUM</br>",
+
+
+
+
+
+);
+//*********************************************************
+
+var lstMember = new Array();
+var parent = new Array();
+var equal = new Array();
+var rec = new Array();
+var cmp1,cmp2;
+var head1,head2;
+var nrec;
+
+var numQuestion;
+var totalSize;
+var finishSize;
+var finishFlag;
+
+//変数の初期化+++++++++++++++++++++++++++++++++++++++++++++
+function initList(){
+var n = 0;
+var mid;
+var i;
+
+//??トすべき配列
+lstMember[n] = new Array();
+for (i=0; i<namMember.length; i++) {
+lstMember[n][i] = i;
+}
+parent[n] = -1;
+totalSize = 0;
+n++;
+
+for (i=0; i<lstMember.length; i++) {
+//要素数が２以上なら２分割し、
+//分割された配列をlstMemberの最後に加える
+if(lstMember[i].length>=2) {
+mid = Math.ceil(lstMember[i].length/2);
+lstMember[n] = new Array();
+lstMember[n] = lstMember[i].slice(0,mid);
+totalSize += lstMember[n].length;
+parent[n] = i;
+n++;
+lstMember[n] = new Array();
+lstMember[n] = lstMember[i].slice(mid,lstMember[i].length);
+totalSize += lstMember[n].length;
+parent[n] = i;
+n++;
+}
+}
+
+//保存用配列
+for (i=0; i<namMember.length; i++) {
+rec[i] = 0;
+}
+nrec = 0;
+
+//引き分けの結果を保存するリスト
+//キ?：リンク始?の値
+// 値 ：リンク終?の値
+for (i=0; i<=namMember.length; i++) {
+equal[i] = -1;
+}
+
+cmp1 = lstMember.length-2;
+cmp2 = lstMember.length-1;
+head1 = 0;
+head2 = 0;
+numQuestion = 1;
+finishSize = 0;
+finishFlag = 0;
+}
+
+//リストの??ト+++++++++++++++++++++++++++++++++++++++++++
+//flag：比較結果
+//  -1：左を選択
+//   0：引き分け
+//   1：右を選択
+function sortList(flag){
+var i;
+var str;
+
+//recに保存
+if (flag<0) {
+rec[nrec] = lstMember[cmp1][head1];
+head1++;
+nrec++;
+finishSize++;
+while (equal[rec[nrec-1]]!=-1) {
+rec[nrec] = lstMember[cmp1][head1];
+head1++;
+nrec++;
+finishSize++;
+}
+}
+else if (flag>0) {
+rec[nrec] = lstMember[cmp2][head2];
+head2++;
+nrec++;
+finishSize++;
+while (equal[rec[nrec-1]]!=-1) {
+rec[nrec] = lstMember[cmp2][head2];
+head2++;
+nrec++;
+finishSize++;
+}
+}
+else {
+rec[nrec] = lstMember[cmp1][head1];
+head1++;
+nrec++;
+finishSize++;
+while (equal[rec[nrec-1]]!=-1) {
+rec[nrec] = lstMember[cmp1][head1];
+head1++;
+nrec++;
+finishSize++;
+}
+equal[rec[nrec-1]] = lstMember[cmp2][head2];
+rec[nrec] = lstMember[cmp2][head2];
+head2++;
+nrec++;
+finishSize++;
+while (equal[rec[nrec-1]]!=-1) {
+rec[nrec] = lstMember[cmp2][head2];
+head2++;
+nrec++;
+finishSize++;
+}
+}
+
+//片方のリストを走査し終えた後の処理
+if (head1<lstMember[cmp1].length && head2==lstMember[cmp2].length) {
+//リストcmp2が走査済 - リストcmp1の残りをコピ?
+while (head1<lstMember[cmp1].length){
+rec[nrec] = lstMember[cmp1][head1];
+head1++;
+nrec++;
+finishSize++;
+}
+}
+else if (head1==lstMember[cmp1].length && head2<lstMember[cmp2].length) {
+//リストcmp1が走査済 - リストcmp2の残りをコピ?
+while (head2<lstMember[cmp2].length){
+rec[nrec] = lstMember[cmp2][head2];
+head2++;
+nrec++;
+finishSize++;
+}
+}
+
+//両方のリストの最後に到達した場合は
+//親リストを更新する
+if (head1==lstMember[cmp1].length && head2==lstMember[cmp2].length) {
+for (i=0; i<lstMember[cmp1].length+lstMember[cmp2].length; i++) {
+lstMember[parent[cmp1]][i] = rec[i];
+}
+lstMember.pop();
+lstMember.pop();
+cmp1 = cmp1-2;
+cmp2 = cmp2-2;
+head1 = 0;
+head2 = 0;
+
+//新しい比較を行う前にrecを初期化
+if (head1==0 && head2==0) {
+for (i=0; i<namMember.length; i++) {
+rec[i] = 0;
+}
+nrec = 0;
+}
+}
+
+if (cmp1<0) {
+str = "Battle No."+(numQuestion-1)+"<br>"+Math.floor(finishSize*100/totalSize)+"% sorted.";
+document.getElementById("battleNumber").innerHTML = str;
+
+showResult();
+finishFlag = 1;
+}
+else {
+showImage();
+}
+}
+
+//結果の?示+++++++++++++++++++++++++++++++++++++++++++++++
+function showResult() {
+var ranking = 1;
+var sameRank = 1;
+var str = "";
+var i;
+
+str += "<table style=\"width:200px; font-size:12px; line-height:120%; margin-left:auto; margin-right:auto; border:1px solid #000; border-collapse:collapse\" align=\"center\">";
+str += "<tr><td style=\"color:#ffffff; background-color:#000; text-align:center;\">순위<\/td><td style=\"color:#ffffff; background-color:#000; text-align:center;\">이름<\/td><\/tr>";
+
+for (i=0; i<namMember.length; i++) {
+str += "<tr><td style=\"border:1px solid #000; text-align:right; padding-right:5px;\">"+ranking+"<\/td><td style=\"border:1px solid #000; padding-left:5px;\">"+namMember[lstMember[0][i]]+"<\/td><\/tr>";
+if (i<namMember.length-1) {
+if (equal[lstMember[0][i]]==lstMember[0][i+1]) {
+sameRank++;
+} else {
+ranking += sameRank;
+sameRank = 1;
+}
+}
+}
+str += "<\/table>";
+
+document.getElementById("resultField").innerHTML = str;
+}
+
+//比較する２つ要素の?示+++++++++++++++++++++++++++++++++++
+function showImage() {
+var str0 = "Battle No."+numQuestion+"<br>"+Math.floor(finishSize*100/totalSize)+"% sorted.";
+var str1 = ""+toNameFace(lstMember[cmp1][head1]);
+var str2 = ""+toNameFace(lstMember[cmp2][head2]);
+
+document.getElementById("battleNumber").innerHTML = str0;
+document.getElementById("leftField").innerHTML = str1;
+document.getElementById("rightField").innerHTML = str2;
+
+numQuestion++;
+}
+
+//数値を名前（顔文字）に変換+++++++++++++++++++++++++++++++
+function toNameFace(n){
+var str = namMember[n];
+
+//顔文字を追加する場合は以下のコメントアウトを外す
+//namMemberのインデックスと矛盾しないように注意
+/*
+str += "<br>────<br>";
+switch(n) {
+//case -1 はサンプルなので削除すること
+case -1: str+="（ ´∀｀）";break;
+default: str+=""+n;
+}
+*/
+return str;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+/**********************************************************
+
+ ?のス?イルを変更する場合はここを編集してください。
+
+**********************************************************/
+#mainTable{
+font-size: 12px;
+font-family: '돋움',sans-serif;
+text-align: center;
+vertical-align: middle;
+width: 410px;
+margin-left: auto;
+margin-right: auto;
+border-collapse: separate;
+border-spacing: 10px 5px;
+}
+#leftField{
+width: 120px;
+height: 150px;
+border: 1px solid #000;
+}
+#rightField{
+width: 120px;
+height: 150px;
+border: 1px solid #000;
+}
+.middleField{
+width: 120px;
+height: 70px;
+border: 1px solid #000;
+}
+//-->
+<!--
+A{
+  text-decoration : none;
+}
+-->
+<!--
+a:hover{color:#99ccff;}
+-->
+</style>
+<meta name="generator" content="Namo WebEditor(Trial)">
+<meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
+
+<body text="#000000" bgcolor="#ffffff" link="#0099ff" vlink="#0099ff" alink="#0099ff">
+<table id="mainTable" align="center">
+<tr>
+        <td id="battleNumber" colspan="3" style="padding-bottom: 10px;">
+            <p>&nbsp;</p>
+        </td>
+</tr>
+<tr>
+<td id="leftField" onClick="if(finishFlag==0)sortList(-1);" rowspan="2">
+&nbsp;
+</td>
+<td class="middleField" onClick="if(finishFlag==0)sortList(0);">
+둘 다 좋다
+</td>
+<td id="rightField" onClick="if(finishFlag==0)sortList(1);" rowspan="2">
+</td>
+</tr>
+<tr>
+<td class="middleField" onClick="if(finishFlag==0)sortList(0);">
+모르겠다
+</td>
+</tr>
+</table><br><br>
+<div id="resultField" style="text-align:center;">
+    <p><font size="2" face="돋움"><span style=""></font></p>
+    <p><font size="2" face="돋움"></font></p>
+
+</div>
+<script type="text/javascript">
+<!--
+initList();
+showImage();
+//-->
+</script>
+
+</body>
+</html>
